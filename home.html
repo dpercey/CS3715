@@ -1,0 +1,185 @@
+<html>
+<head>
+	<link rel="stylesheet" href="homeCSS.css">
+	<link rel="stylesheet" href="myTopnav.css">
+</head>
+
+<body onload ="load()">
+
+	<h1><span> Welcome to VonLobberg University </span></h1>
+	<div class = "welcome">
+		<div class = "picture">
+		<img src="seven.jpg" style="width:300px; height:150px;">
+		</div>
+
+
+
+		<div class = "text">
+			<ul style="list-style-type:none">
+				<li> 1 Main Street, St. John's NL </li>
+				<li> 709-555-5555 </li>
+			</ul>
+		</div>
+	</div>
+			<nav>
+			<div class="topnav" id="myTopnav">
+				<a href="home.html">Home</a>
+				<a href="campus.html">Campus</a>
+				<a href="student.html">Student</a>
+				<a href="previousCourses.html">Previous Courses</a>
+			</div>
+			</nav>
+			<hr>
+
+	<script>
+
+function addEvents(){
+	var d = document.getElementById("day").value;
+	var s = document.getElementById("eventText").value;
+    var node = document.createElement("LI");
+    var textnode = document.createTextNode(s);
+    node.appendChild(textnode);
+    document.getElementById(d).appendChild(node);
+    
+    var m = [];
+    var t = [];
+    var w = [];
+    var r = [];
+    var f = [];
+
+    if(d=="mon"){
+    	m.push(s);
+    	localStorage.setItem("m", JSON.stringify(m));
+    } else if(d=="tue"){
+    	t.push(s);
+    	localStorage.setItem("t", JSON.stringify(t));
+    } else if(d=="wed"){
+    	w.push(s);
+    	localStorage.setItem("w", JSON.stringify(w));
+    } else if(d=="thur"){
+    	r.push(s);
+    	localStorage.setItem("r", JSON.stringify(r));
+    } else if(d=="fri"){
+    	f.push(s);
+    	localStorage.setItem("f", JSON.stringify(f));
+    }
+}
+
+function load(){
+     var storedM = JSON.parse(localStorage.getItem('m'));
+     var storedT = JSON.parse(localStorage.getItem('t'));
+     var storedW = JSON.parse(localStorage.getItem('w'));
+     var storedR = JSON.parse(localStorage.getItem('r'));
+     var storedF = JSON.parse(localStorage.getItem('f'));
+
+    for(i=0; i<m.length; i++){
+
+	var d = document.getElementById("day").value;
+	var s = document.getElementById("eventText").value;
+    var node = document.createElement("LI");
+    var textnode = document.createTextNode(s);
+    node.appendChild(textnode);
+    document.getElementById(d).appendChild(node);
+
+    document.getElementById(m[i]).innerHTML = storedM;
+ 	}
+
+ 	for(i=0; i<t.length; i++){
+    document.getElementById(t[i]).innerHTML = storedT;
+ 	}
+
+ 	for(i=0; i<w.length; i++){
+    document.getElementById(w[i]).innerHTML = storedW;
+ 	}
+
+ 	for(i=0; i<r.length; i++){
+    document.getElementById(r[i]).innerHTML = storedR;
+ 	}
+
+ 	for(i=0; i<f.length; i++){
+    document.getElementById(f[i]).innerHTML = storedF;
+ 	}
+}
+
+</script>
+
+
+
+<div class = format>
+
+	<div class = "left">
+		<h3> Events </h3>
+		<hr>
+			<h5>Monday</h5>
+			<ul id="mon" style="list-style-type:disc">
+				<li>basketball</li>
+			</ul>
+
+			<h5>Tuesday</h5>
+			<ul id="tue" style="list-style-type:disc">
+
+			</ul>
+
+			<h5>Wednesday</h5>
+			<ul id="wed" style="list-style-type:disc">
+
+			</ul>
+
+			<h5>Thursday</h5>
+			<ul id="thur" style="list-style-type:disc">
+
+			</ul>
+
+			<h5>Friday</h5>
+			<ul id="fri" style="list-style-type:disc">
+
+			</ul>
+		<div id="eventManager">
+			Add Event To <select id="day">
+				<option value="mon">Monday</option>
+				<option value="tue">Tuesday</option>
+				<option value="wed">Wednesday</option>
+				<option value="thur">Thursday</option>
+				<option value="fri"> Friday</option>
+			</select>
+			<input type="text" id = "eventText"></textarea>
+			<button onclick="addEvents()">Add</button>
+		</div>
+	</div>
+
+
+
+	<div class = "right">
+		<a href="one.html">
+		<div class = "campus1">
+			<div class = "text1"> <p> Balfield Campus </p> </div>
+			<div class = "picture">
+			<img src="one.jpg" style="width:250px; height:150px;">
+			</div>
+		</div>
+		</a>
+
+		<a href="two.html">
+		<div class = "campus2">
+			<div class = "text1"> <p> St. Claire Campus </p> </div>
+			<div class = "picture">
+			<img src="two.jpg" style="width:250px; height:150px;">
+			</div>
+		</div>
+		</a>
+
+		<a href="three.html">
+		<div class = "campus3">
+			<div class = "text1"> <p> Zoidberg Campus </p> </div>
+			<div class = "picture">
+			<img src="three.jpg" style="width:250px; height:150px;">
+			</div>
+		</div>
+		</a>
+	</div>
+</div>
+	<div class = "footer">
+		<p> University copyright: All images and information is made up and used just for demonstration. </p>
+	</div>
+</body>
+</html>
